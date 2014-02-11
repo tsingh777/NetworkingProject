@@ -3,16 +3,17 @@ package NetworkingProject.src.netwokringProject;
 import java.io.File;
 import java.io.IOException;
 
-public class startRemotePeers {
+public class RemotePeers {
 	
 	public static void main(String[] args){
 		
 	}
-	public startRemotePeers(){
+	public RemotePeers(){
 		
 	}
 
 	public static void startPeer(File peerInfo){
+		//peerID | hostname | port number | has file (1=true or 0=false)
 		String workingDir = System.getProperty("user.dir"); 
 		String hostname = "";
 		String peerProcessName = "";
@@ -31,7 +32,7 @@ public class startRemotePeers {
 
 	}
 	public static void readFile(){
-		
+		// peerID | hostname | port number | has file (1=true or 0=false)
 		
 	}
 }
