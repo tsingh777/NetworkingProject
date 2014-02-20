@@ -1,5 +1,9 @@
 package NetworkingProject.src.netwokringProject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Vector;
+
 /*
  *                     CEN5501C Project2
  * This is the program starting remote processes.
@@ -14,9 +18,57 @@ public class RemotePeerInfo {
 	public String peerAddress;
 	public String peerPort;
 	
+	public int NumberOfPreferredNeighbors;
+	public int UnchokingInterval;
+	public int OptimisticUnchokingInterval;
+	public String FileName;
+	public int FileSize;
+	public int PieceSize; 
+	public Vector<String> commonInfoVector;
+	
 	public RemotePeerInfo(String pId, String pAddress, String pPort) {
 		peerId = pId;
 		peerAddress = pAddress;
 		peerPort = pPort;
+		this.readCommon();
+		
+	}
+	public void readCommon(){
+		String st;
+		commonInfoVector = new Vector<String>();
+		try {
+			//BufferedReader in = new BufferedReader(new FileReader("CommonInfo.cfg"));
+			BufferedReader in = new BufferedReader(new FileReader("/Users/tsingh7/Documents/workspace/NetworkingProject/src/NetworkingProject/src/netwokringProject/Common.cfg"));
+			while((st = in.readLine()) != null) {
+				
+				 String[] tokens = st.split("\\s+");
+				 
+//		    	 System.out.println("tokens begin ----");
+//			     for (int x=0; x<tokens.length; x++) {
+//			         System.out.println(tokens[x]);
+//			     }
+//		         System.out.println("tokens end ----");
+		    //     System.out.println(tokens[1]);
+		         commonInfoVector.addElement(tokens[1]);
+			    
+			}
+			in.close();
+			NumberOfPreferredNeighbors= Integer.parseInt(commonInfoVector.get(0));
+			UnchokingInterval = Integer.parseInt(commonInfoVector.get(1));
+			OptimisticUnchokingInterval= Integer.parseInt(commonInfoVector.get(2));
+			FileName = commonInfoVector.get(3);
+			FileSize = Integer.parseInt(commonInfoVector.get(4));
+			PieceSize = Integer.parseInt(commonInfoVector.get(5));
+		}
+		catch (Exception ex) {
+			System.out.println(ex.toString());
+		}
+	}
+	public String toString(){
+		String s = "peerID: "+peerId + "\npeerAddress: " + peerAddress + "\npeerPort" + peerPort + "\nNumberOfPreferredNeighbors: " + NumberOfPreferredNeighbors;
+		s= s + "\nUnchokingInterval:" + UnchokingInterval + "\nOptimisticUnchokingInterval" + OptimisticUnchokingInterval + "\nFilename:";
+		s= s + FileName + "\nFileSize: " + FileSize + "\nPieceSize " + PieceSize;  
+	
+		return s;
 	}
 }
