@@ -1,4 +1,4 @@
-package NetworkingProject.src.netwokringProject;
+package NetworkingProject.src.networkingProject;
 
 /*
  *                     CEN5501C Project2

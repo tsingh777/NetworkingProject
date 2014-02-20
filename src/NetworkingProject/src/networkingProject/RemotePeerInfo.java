@@ -1,4 +1,4 @@
-package NetworkingProject.src.netwokringProject;
+package NetworkingProject.src.networkingProject;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
