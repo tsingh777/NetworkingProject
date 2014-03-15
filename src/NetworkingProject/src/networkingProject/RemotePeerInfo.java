@@ -17,28 +17,33 @@ public class RemotePeerInfo {
 	public String peerId;
 	public String peerAddress;
 	public String peerPort;
+	public String hasFile;
 	
-	public int NumberOfPreferredNeighbors;
+	/*public int NumberOfPreferredNeighbors;
 	public int UnchokingInterval;
 	public int OptimisticUnchokingInterval;
 	public String FileName;
 	public int FileSize;
 	public int PieceSize; 
-	public Vector<String> commonInfoVector;
+	public int NumOfPieces;
+	public Vector<String> commonInfoVector;*/
 	
-	public RemotePeerInfo(String pId, String pAddress, String pPort) {
+	public RemotePeerInfo(String pId, String pAddress, String pPort, String hasFile) {
 		peerId = pId;
 		peerAddress = pAddress;
 		peerPort = pPort;
-		this.readCommon();
+		this.hasFile = hasFile;
+		//this.readCommon();
 		
 	}
-	public void readCommon(){
+	
+	
+	/*public void readCommon(){
 		String st;
 		commonInfoVector = new Vector<String>();
 		try {
-			//BufferedReader in = new BufferedReader(new FileReader("CommonInfo.cfg"));
-			BufferedReader in = new BufferedReader(new FileReader("/Users/tsingh7/Documents/workspace/NetworkingProject/src/NetworkingProject/src/netwokringProject/Common.cfg"));
+			
+			BufferedReader in = new BufferedReader(new FileReader("Common.cfg"));//This file is stored in the project directory 
 			while((st = in.readLine()) != null) {
 				
 				 String[] tokens = st.split("\\s+");
@@ -59,16 +64,17 @@ public class RemotePeerInfo {
 			FileName = commonInfoVector.get(3);
 			FileSize = Integer.parseInt(commonInfoVector.get(4));
 			PieceSize = Integer.parseInt(commonInfoVector.get(5));
+			NumOfPieces= (int) Math.ceil((double)FileSize/PieceSize);
 		}
 		catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
-	}
-	public String toString(){
+	}*/
+	/*public String toString(){
 		String s = "peerID: "+peerId + "\npeerAddress: " + peerAddress + "\npeerPort" + peerPort + "\nNumberOfPreferredNeighbors: " + NumberOfPreferredNeighbors;
 		s= s + "\nUnchokingInterval:" + UnchokingInterval + "\nOptimisticUnchokingInterval" + OptimisticUnchokingInterval + "\nFilename:";
-		s= s + FileName + "\nFileSize: " + FileSize + "\nPieceSize " + PieceSize;  
+		s= s + FileName + "\nFileSize: " + FileSize + "\nPieceSize " + PieceSize + "\nNumberOfPieces" + NumOfPieces;  
 	
 		return s;
-	}
+	}*/
 }
