@@ -11,7 +11,8 @@ public class SocketConnection {
 			socket= new Socket("Taranjits-MacBook-Pro.local",port);
 			BufferedReader input =
 		            new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			System.out.print(input.readLine());
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			System.out.print(out);
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

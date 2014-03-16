@@ -15,6 +15,7 @@ public class ServerConnection extends Thread {
 		if(serverSocket != null){
 			try {
 				while(true){
+					System.out.print("accept");
 					Socket socket = serverSocket.accept();
 					this.outputStream= socket.getOutputStream();
 					this.inputStream = socket.getInputStream();
@@ -25,6 +26,14 @@ public class ServerConnection extends Thread {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			finally{
+				try {
+					serverSocket.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

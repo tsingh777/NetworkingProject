@@ -21,7 +21,7 @@ public class peerProcess {
 		}
 		
 		Peer peer1= new Peer(peersFromFile.peers.get(peerID));
-		//peer1.server.start();
+		peer1.server.start();
 		
 		//Peer peer2= new Peer(peersFromFile.peers.get(peerID + 1));
 //		try {
