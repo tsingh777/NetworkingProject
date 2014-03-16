@@ -1,7 +1,7 @@
 package NetworkingProject.src.networkingProject;
 
 /*
- *                     CEN5501C Project2
+ *                  
  * This is the program starting remote processes.
  * This program was only tested on CISE SunOS environment.
  * If you use another environment, for example, linux environment in CISE 
@@ -21,7 +21,7 @@ import java.util.*;
 public class StartRemotePeers {
 
 	public Vector<RemotePeerInfo> peerInfoVector;
-	public static Vector<Peer> peers;
+	//public static Vector<Peer> peers;
 	
 	public void getConfiguration()
 	{
@@ -56,7 +56,7 @@ public class StartRemotePeers {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RemotePeerInfo peer = new RemotePeerInfo("","","","");
-		peers= new Vector<Peer>();
+		//peers= new Vector<Peer>();
 		//peer.readCommon();
 		try {
 			StartRemotePeers myStart = new StartRemotePeers();
@@ -73,7 +73,7 @@ public class StartRemotePeers {
 				
 				
 				Runtime.getRuntime().exec("ssh " + pInfo.peerAddress + " cd " + path + "; java peerProcess " + pInfo.peerId);
-				peers.add(new Peer(Integer.parseInt(pInfo.peerId), pInfo.peerAddress,Integer.parseInt(pInfo.peerPort), Integer.parseInt(pInfo.hasFile)));
+				//peers.add(new Peer(Integer.parseInt(pInfo.peerId), pInfo.peerAddress,Integer.parseInt(pInfo.peerPort), Integer.parseInt(pInfo.hasFile)));
 				//System.out.println(peers.get(i).toString());
 			}	
 			
