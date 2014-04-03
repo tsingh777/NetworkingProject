@@ -8,6 +8,7 @@ public class Peer  {
 	public peerInfo peerInfo;
 	public SocketConnection connection;
 	public ServerConnection server;
+	
 	public Logger log;
 //	private boolean isChokingMe;
 //	private boolean amInterested;
@@ -57,7 +58,17 @@ public class Peer  {
 		this.peerInfo = peerInfo2;
 		this.log= new Logger(peerInfo2.getId());
 		this.server = new ServerConnection(peerInfo2.lPort);
-		//this.connection = new SocketConnection(this.peerInfo.hostname, this.peerInfo.lPort);
+		//this.connection = new SocketConnection();
+		//this.server.serverSocket= new ServerSocket(peerInfo2.getlPort());
+	
+
+	}
+	public Peer(peerInfo peerInfo2, ReadPeerInfo allPeers) {
+		// TODO Auto-generated constructor stub
+		this.peerInfo = peerInfo2;
+		this.log= new Logger(peerInfo2.getId());
+		this.server = new ServerConnection(peerInfo2.lPort);
+		this.connection = new SocketConnection(allPeers, this.log, this.peerInfo);
 		//this.server.serverSocket= new ServerSocket(peerInfo2.getlPort());
 	
 

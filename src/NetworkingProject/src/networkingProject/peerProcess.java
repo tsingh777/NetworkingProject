@@ -1,6 +1,5 @@
 package NetworkingProject.src.networkingProject;
 
-import java.io.IOException;
 import java.io.*;
 
 public class peerProcess {
@@ -20,21 +19,18 @@ public class peerProcess {
 			e.printStackTrace();
 		}
 		
-		Peer peer1= new Peer(peersFromFile.peers.get(peerID));
-		peer1.server.start();
+		Peer peer= new Peer(peersFromFile.peers.get(peerID), peersFromFile);
+		peer.server.start();
+	
+		peer.connection.start();
 		
-		//Peer peer2= new Peer(peersFromFile.peers.get(peerID + 1));
-//		try {
-//			peer1.connection.socket.connect(peer2.server.serverSocket.getLocalSocketAddress());
-//			BufferedReader in =new BufferedReader(new InputStreamReader(peer1.connection.socket.getInputStream()));
-//			OutputStream out = peer1.connection.socket.getOutputStream();
-//			System.out.print(in.readLine());
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		try {
+			peer.server.join();
+			peer.connection.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

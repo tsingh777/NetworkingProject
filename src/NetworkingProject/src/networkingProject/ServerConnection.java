@@ -21,6 +21,7 @@ public class ServerConnection extends Thread {
 					this.inputStream = socket.getInputStream();
 					PrintWriter out= new PrintWriter(outputStream, true);
 					out.println("hello");
+					System.out.println(this.inputStream.read());
 				}
 				
 			} catch (IOException e) {
